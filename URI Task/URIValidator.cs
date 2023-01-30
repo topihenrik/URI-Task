@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
 
 namespace UriValidation
 {
@@ -44,6 +43,10 @@ namespace UriValidation
                 if (uri.Host == "login" && queryParams.Count == 1)
                 {
                     if (queryParams.AllKeys[0] == "source" && queryParams[0] != null && queryParams[0] != "")
+                    {
+                        parameters["source"] = queryParams[0];
+                    }
+                    else
                     {
                         Console.WriteLine("Invalid parameters");
                         return false;
@@ -103,7 +106,7 @@ namespace UriValidation
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine("Exception: " + ex.Message);
                 return false;
             }
         }
